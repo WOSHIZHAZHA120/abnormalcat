@@ -7,7 +7,7 @@ import doge from "../resources/images/doge.png";
 import icon from "../resources/images/icon.png";
 import wechat from "../resources/images/wechat.png";
 import {useWindowSize} from "@vueuse/core";
-import "../scripts/sakura";
+import "../scripts/sakura.js";
 
 const appStore = useAppStore();
 const theme = computed(() => {
