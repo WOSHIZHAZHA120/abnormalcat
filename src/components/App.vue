@@ -2,149 +2,226 @@
 import {computed} from "vue";
 import {darkTheme} from "naive-ui";
 import {useAppStore} from "../core/stores";
-import {Check} from "@vicons/tabler";
+import header from "../resources/images/header.png";
+import doge from "../resources/images/doge.png";
+import icon from "../resources/images/icon.png";
+import wechat from "../resources/images/wechat.png";
+import {useWindowSize} from "@vueuse/core";
+import "../scripts/sakura";
 
 const appStore = useAppStore();
 const theme = computed(() => {
   return appStore.theme === 'light' ? null : darkTheme;
 });
 
-function toURL(target: string) {
-  window.open(target);
-}
+const {width} = useWindowSize();
 </script>
 
 <template>
   <n-config-provider :theme="theme" class="h-full">
     <n-layout class="h-full">
-      <n-layout-content>
-        <n-card class="mx-auto lg:w-3/5 mt-10 text-center">
-          <template #header>
-            <n-text>你好! 我是&nbsp;</n-text>
+      <n-layout-content class="pb-20">
+        <n-space vertical>
+          <n-el class="bg-pink-300 mx-auto text-center relative">
+            <n-image :src="header" class="lg:w-[30%]" preview-disabled/>
 
-            <n-tooltip>
-              <template #trigger>
-                <n-text type="info">Abnormal Cat</n-text>
+            <n-text class="absolute w-full lg:text-4xl left-1/2 bottom-[10px] lg:bottom-[25px] translate-x-[-50%]">
+              『泣かないで 猫 全部大丈夫だ』
+            </n-text>
+          </n-el>
+
+          <n-card class="lg:w-3/5 lg:mx-auto mx-2.5 text-left">
+            <n-thing>
+              <template #header>
+                <n-space>
+                  <n-popover placement="right">
+                    <template #trigger>
+                      <n-image :img-props="{ class: 'w-[5em]' }" :src="icon"
+                               preview-disabled/>
+                    </template>
+
+                    <n-el class="p-2.5 info">
+                      <n-space>
+                        <n-space size="small">
+                          <n-image :img-props="{ class: 'w-[7.5em]' }" :src="icon" preview-disabled/>
+
+                          <n-thing class="p-2.5 pl-0 pb-0">
+                            <template #header>
+                              Abnormal Cat
+                            </template>
+
+                            <template #description>
+                              <n-el class="leading-none">
+                                <n-text class="text-sm">
+                                  不要哭 猫. 一切会好起来的
+                                  <br>
+                                  不要放弃 一切的一切都是该到来的 加油!
+                                  <br>
+                                  向前奔跑 不要停下来啊！
+                                </n-text>
+                              </n-el>
+                            </template>
+                          </n-thing>
+                        </n-space>
+                      </n-space>
+                    </n-el>
+                  </n-popover>
+
+                  <n-el>
+                    你好! 我是
+                    <n-popover>
+                      <template #trigger>
+                        <n-text type="info">Abnormal Cat</n-text>
+                      </template>
+
+                      猫猫头子
+                    </n-popover>
+                    , 来自中国, 你也可以叫我
+
+                    <n-popover>
+                      <template #trigger>
+                        <n-text type="info">ABC</n-text>
+                      </template>
+
+                      猫 小霖
+                    </n-popover>
+                  </n-el>
+                </n-space>
               </template>
 
-              <n-text :depth="3" delete>猫咪老师</n-text>
-            </n-tooltip>
+              <template #header-extra>
+                <n-space>
+                  <n-popover>
+                    <template #trigger>
+                      <n-tag type="success">
+                        <n-text type="success">二刺螈</n-text>
+                      </n-tag>
+                    </template>
 
-            <n-text>,&nbsp;</n-text>
-            <n-text>来自中国&nbsp;</n-text>
+                    不要瞧不起二次元啊喂!
+                  </n-popover>
 
-            <n-text>,&nbsp;</n-text>
-            <n-text>你也可以叫我的简写&nbsp;</n-text>
+                  <n-popover>
+                    <template #trigger>
+                      <n-space>
+                        <n-tag type="success">
+                          <n-text type="success">萌新建模师</n-text>
+                        </n-tag>
 
-            <n-tooltip>
-              <template #trigger>
-                <n-text type="info">ABC</n-text>
+                        <n-tag type="success">
+                          <n-text type="success">萌新画师</n-text>
+                        </n-tag>
+                      </n-space>
+                    </template>
+
+                    手废了, 不要找我 呜呜
+                  </n-popover>
+                </n-space>
               </template>
 
-              <n-text :depth="3" delete>猫猫头子</n-text>
-            </n-tooltip>
+              <template #description>
+                <n-text :depth="3">
+                  故事的后续: 猫猫辜负了一个他很喜欢很喜欢的人, 为了表达歉意, 他选择了自己的方式来为他喜欢的赎罪
+                  <br>
+                  猫猫回头望着曾经带着自己离开天台的那个她, 独自向着自己的方向走去, 而她也为了自己的路独自․․․․․․ 不ǃ
+                  和他们一起踏上了旅途
+                  <br>
+                  或许有一天猫猫知道自己错了, 重新回过了头, 但是那时的猫猫或许早已经把心放在了他那...
+                </n-text>
+              </template>
 
-            <n-space justify="center">
-              <n-tag type="success">
-                <n-space justify="space-between">
-                  <n-text type="success">二刺螈</n-text>
-                  <n-icon :component="Check"/>
-                </n-space>
-              </n-tag>
+              <n-divider>作品</n-divider>
 
-              <n-tag type="success">
-                <n-space justify="space-between">
-                  <n-text type="success">宅男&nbsp;</n-text>
-                  <n-icon :component="Check"/>
-                </n-space>
-              </n-tag>
+              <n-grid :x-gap="10" :y-gap="10" cols="1 768:2">
+                <n-grid-item>
+                  <n-popover>
+                    <template #trigger>
+                      <iframe class="w-full" src="//player.bilibili.com/player.html?aid=389441034"/>
+                    </template>
 
-              <n-tag type="success">
-                <n-space justify="space-between">
-                  <n-text type="success">特摄迷</n-text>
-                  <n-icon :component="Check"/>
-                </n-space>
-              </n-tag>
-            </n-space>
-          </template>
+                    和朋友做的小玩意
+                  </n-popover>
+                </n-grid-item>
 
-          <n-h6>
-            <n-text>来自中国的男孩子 正在试图学习日语 (我很笨的拉)</n-text>
-            <br>
-            <n-text :depth="3" delete>沉迷于 VRChat</n-text>
-            <n-text>,&nbsp;</n-text>
-            <n-text>是个刚玩不久的萌新</n-text>
-          </n-h6>
+                <n-grid-item>
+                  <n-popover>
+                    <template #trigger>
+                      <iframe class="w-full" src="//player.bilibili.com/player.html?aid=687077176"/>
+                    </template>
 
-          <n-divider/>
+                    你也相信光嘛
+                    <n-image :img-props="{ class: 'w-[1.5em]' }" :src="doge" preview-disabled/>
+                  </n-popover>
+                </n-grid-item>
+              </n-grid>
 
-          <n-h4>
-            <n-text>故事的结尾他独自踏入了遥远的潮汐</n-text>
-            <br>
-            <n-text>我们终会相遇 只不过下次的相遇也只是过客而已</n-text>
-            <br>
-            <n-text>你与我终将追求自己的理想</n-text>
-            <br>
-            <n-text>此刻我就是守望在遥遥大海上的灯塔</n-text>
-            <br>
-            <n-text>宁愿做个傻子去默默看着 不渴望不遥及</n-text>
-            <br>
-            <n-text>因为守望在天台此刻我就是自己的主角</n-text>
-            <br>
-            <n-text>感谢你没有为我而流泪面具的底下永远是对你微笑</n-text>
-          </n-h4>
+              <n-divider>发现我</n-divider>
 
-          <n-divider>发现我</n-divider>
+              <n-descriptions :columns="width <= 768 ? 1 : 3" bordered>
+                <n-descriptions-item label="QQ">
+                  <n-button href="https://wpa.qq.com/msgrd?uin=3318415065" tag="a" text type="primary">
+                    3318415065
+                  </n-button>
+                </n-descriptions-item>
 
-          <n-space justify="space-evenly">
-            <n-a href="https://wpa.qq.com/msgrd?uin=3318415065">
-              <n-tooltip>
-                <template #trigger>
-                  <n-image preview-disabled
-                           src="https://shields.io/badge/qq-3318415065-121212?logo=Tencent%20QQ&style=for-the-badge"/>
-                </template>
+                <n-descriptions-item label="QQ 粉丝群">
+                  <n-button href="https://jq.qq.com/?k=ILX65Kkg" tag="a" text type="primary">
+                    762411557
+                  </n-button>
+                </n-descriptions-item>
 
-                <n-text>买黑或者白迪迦加这个</n-text>
-                <n-divider vertical/>
-                <n-text :depth="3" delete>是个吉祥物</n-text>
-              </n-tooltip>
-            </n-a>
+                <n-descriptions-item label="微信">
+                  <n-popover trigger="click">
+                    <template #trigger>
+                      <n-button text type="primary">Will_be_in_you_Lily</n-button>
+                    </template>
 
-            <n-a href="https://wpa.qq.com/msgrd?uin=3318415065">
-              <n-tooltip>
-                <template #trigger>
-                  <n-image preview-disabled
-                           src="https://shields.io/badge/qq粉丝群-762411557-121212?logo=Tencent%20QQ&style=for-the-badge"/>
-                </template>
+                    <n-el class="lg:w-1/2 mx-auto text-center">
+                      <n-image :src="wechat" preview-disabled/>
+                    </n-el>
+                  </n-popover>
+                </n-descriptions-item>
 
-                <n-text>买奈克瑟斯加这个 (记得标明来意~)</n-text>
-                <n-divider vertical/>
-                <n-text :depth="3" delete>加入我们猫猫家族发扬光大</n-text>
-              </n-tooltip>
-            </n-a>
+                <n-descriptions-item label="哔哩哔哩">
+                  <n-button href="https://space.bilibili.com/454104032" tag="a" text type="primary">
+                    Abnormal Cat
+                  </n-button>
+                </n-descriptions-item>
 
-            <n-image preview-disabled
-                     src="https://shields.io/badge/WeChat-SorryYuanQing-07C160?logo=WeChat&style=for-the-badge"/>
+                <n-descriptions-item label="VRChat">
+                  <n-button href="https://vrchat.com/home/user/usr_245af4df-3061-4aef-86bc-0cd27668b8eb" tag="a" text
+                            type="primary">
+                    Abnormal cat
+                  </n-button>
+                </n-descriptions-item>
 
-            <n-a href="https://vrchat.com/home/user/usr_245af4df-3061-4aef-86bc-0cd27668b8eb">
-              <n-image preview-disabled
-                       src="https://shields.io/badge/vrchat-abnormal%20cat-121212?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAAAAAAfl4auAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQflChcHHRWa3clkAAAEfklEQVRIx+WXXYiUVRjHf+e878yaprsWlW1hobumZeVHRavgSriuriFFgXSVUmhCgohKF1mSpZARlFGUFUhEF114EUH51VK6lmaJqGle5EehYSuoi+vM+57z7+KdeXdm1plWu+ii52bOnHN+5znnP895zjNGXLvZf8H+hzCSpFi75t6YCQdkmYa2LYolSUiS0xprBu7P2GXykmQE8OZyW/9Y88CENyc2d/sXXku3fWw4E08ki/2zeZ1tNYP2pNtezeBDykcDtLx+v5nFKdzBXOUH5leS8nqGhyQpBLjASAqCiVS5pFkUokRQw0jOA4RlhMdKfcs4a/oWi01QgpPCJSFzbvCg4oSLGgbm4iUroG5oiC+JKFVGmDg5q7EthwDP4bvuWHKZ/U1Nzc3Nzc1N4+fvsr7CM5I0lSWKpEgrydKpWFKktdSxWe+nezOsKPyakdYwRpJKPRsmY9mGAMt2osF3E2ASNyYM179rXMUpS9utDZfZQQCyp/fiJ48BjFbt3db5+bQI3o4CVYONv2Uq5ufjxuPZfSHL7GQ/9zzQOu3JLffHwdEjVIXxdJDt/Q6P2Iqnvdjt/OXsowScqQFbZmQjtmIUum+Jx09whe4gCKkvj5T+sMZM9uzsDTwHD4e02QgAh4vFr3hzazlenkkcs8n8th9HJ5bZhakhgc3s/Ix47NhyuDLC2l8S21tgK/nbH8YCnre+zNnTu/PZ/JLABdVhw6Rxv7DtxWz3Hpg+1CU3o6sLsDb//GIFFb7K4Dhsw+w7wQ9nM8wp9ZHxo7ds8LUEA0MHYc8uviaqn5YMWlZ2fZyJ0JRKsSthS8ttETvohJbGxJFhUsuCp6g79jquNmzcsFbYe/CIpYPiJXKwfFCOd06FqgkDc+D4hrwPZ6RjAblx86k790a6XBXYMn0YPZssE8eVjFmWDcmx8XDga8LGN7Zg8pZZxKWnaX6Wut51tc+cXA6LaKcgl00+ltbngk+7rKsJW2aGkXVNDxYpjwEb37mIUKdq3CoAq7GrhtibXs16A5a2RxraWwkIWD4+XjGvIiJLclj6npw71pM+Pj7nC70X/qzMYSH9zLjhw1VMs1LWYwCj64e64j4L2TxMDlZmgWSK04wp5kijimtRgIfzV7nv0tVMv4bopiEVbAqdZ8PIVbWS0JBzUab3K6akgp0cwTxX4332ZUNeixl6oK8y+GihmbhoFFc2mxvVXNBPpud788eHu/26lannWBsyVC1KjG08IaekeDkAYF9JvieeXXD0vV3nrlyTyHafn77NYgBvD91rxrYunFDIZSrUUlI+d0W7pC9CuzQJIqeDhp/kkkpKBVguqqpXrDVB+ImiIrwvLUEoUbGaxXqC+v2KU9j1h2sUT93juO+8fCU8kNrTuBs2DTnwHL5fJA+oeIq0MQzWK3I6dLXblhRpsclsVU6HDD9eLeyVm8rIUyqHB1hvG5/dNOLkgpjaOaxagMejPwi/WXEtgiXHXm0zazdy3fGrPbMkOT1tbcDjKXs1sHfu5Xo780zfxTf/w/9VfwN7w8GvhqhOSwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0xMC0yM1QwNzoyOToyMSswMDowML5/hdsAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMTAtMjNUMDc6Mjk6MjErMDA6MDDPIj1nAAAAV3pUWHRSYXcgcHJvZmlsZSB0eXBlIGlwdGMAAHic4/IMCHFWKCjKT8vMSeVSAAMjCy5jCxMjE0uTFAMTIESANMNkAyOzVCDL2NTIxMzEHMQHy4BIoEouAOoXEXTyQjWVAAAAAElFTkSuQmCC&style=for-the-badge"/>
-            </n-a>
+                <n-descriptions-item label="Discord">
+                  abnormalcat#9023
+                </n-descriptions-item>
+              </n-descriptions>
+            </n-thing>
+          </n-card>
 
-            <n-image preview-disabled
-                     src="https://shields.io/badge/discord-abnormalcat%239023-121212?logo=discord&style=for-the-badge"/>
+          <n-space class="lg:fixed left-0 top-0 h-[520px] lg:z-[1]" justify="center">
+            <iframe class="h-full" src="//music.163.com/outchain/player?type=0&id=8019816940&auto=1&height=500"/>
           </n-space>
-        </n-card>
+        </n-space>
       </n-layout-content>
 
       <n-layout-footer class="p-5 text-center" position="absolute">
-        <n-text>ひさしの猫の鳴き声を聞いてください</n-text>
-        <n-divider vertical/>
-
-        <n-button text @click="toURL('https://zhazha120.cn')">
-          <n-text :depth="3">开发: 渣渣120</n-text>
+        开发:
+        <n-button href="https://zhazha120.cn" tag="a" text type="primary">
+          渣渣120
         </n-button>
       </n-layout-footer>
     </n-layout>
   </n-config-provider>
 </template>
+
+<style scoped>
+.info {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url(../resources/images/bg.webp);
+}
+</style>
